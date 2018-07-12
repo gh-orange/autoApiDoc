@@ -180,12 +180,17 @@ public class AutoApiDocUtil {
                                     remark.append("/**\n");
                                     remark.append("@api ");
                                     remark.append("{").append(methodRequestMethod.name()).append("} ");
-                                    remark.append(clazzRequestUri).append(methodRequestUri);
+                                    remark.append(clazzRequestUri).append(methodRequestUri).append(" ");
+                                    remark.append(methodRequestUri.replaceFirst("/", ""));
                                     remark.append("\n");
                                     remark.append("@apiName ");
+                                    remark.append(methodRequestUri.replaceFirst("/", ""));
+                                    remark.append("\n");
+                                    remark.append("@apiVersion ");
+                                    remark.append("1.0.0");
                                     remark.append("\n");
                                     remark.append("@apiGroup ");
-                                    remark.append(clazzAnnotation.value()[0]);
+                                    remark.append(clazzRequestUri.replaceFirst("/", ""));
                                     remark.append("\n");
                                     for (ParamInfo requestParam : paramInterceptor.getRequireParams()) {
                                         remark.append("@apiParam ");
